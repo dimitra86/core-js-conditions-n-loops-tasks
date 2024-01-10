@@ -170,34 +170,96 @@ function convertToRomanNumerals(num) {
 function convertNumberToString(numberStr) {
   let str = '';
   for (let i = 0; i < numberStr.length; i += 1) {
-    switch (numberStr[i]) {
-      case '1':
-        str = `${str}one`;
-        break;
-      case '2':
-        str = `${str} two`;
-        break;
-      case '0':
-        str = `${str} zero`;
-        break;
-      case '-':
-        str = `${str}minus `;
-        break;
-      case '.':
-        str = `${str} point`;
-        break;
-      case ',':
-        str = `${str} point`;
-        break;
-      case '5':
-        str = `${str} five`;
-        break;
-      case '9':
-        str = `${str} nine`;
-        break;
-      default:
-        str = `${str}`;
-        break;
+    if (i === 0) {
+      switch (numberStr[i]) {
+        case '1':
+          str = `${str}one`;
+          break;
+        case '2':
+          str = `${str}two`;
+          break;
+        case '0':
+          str = `${str}zero`;
+          break;
+        case '-':
+          str = `${str}minus`;
+          break;
+        case '.':
+          str = `${str}point`;
+          break;
+        case ',':
+          str = `${str}point`;
+          break;
+        case '5':
+          str = `${str}five`;
+          break;
+        case '9':
+          str = `${str}nine`;
+          break;
+        case '8':
+          str = `${str}eight`;
+          break;
+        case '4':
+          str = `${str}four`;
+          break;
+        case '6':
+          str = `${str}six`;
+          break;
+        case '7':
+          str = `${str}seven`;
+          break;
+        case '3':
+          str = `${str}three`;
+          break;
+        default:
+          str = `${str}`;
+          break;
+      }
+    } else {
+      switch (numberStr[i]) {
+        case '1':
+          str = `${str} one`;
+          break;
+        case '2':
+          str = `${str} two`;
+          break;
+        case '0':
+          str = `${str} zero`;
+          break;
+        case '-':
+          str = `${str}minus `;
+          break;
+        case '.':
+          str = `${str} point`;
+          break;
+        case ',':
+          str = `${str} point`;
+          break;
+        case '5':
+          str = `${str} five`;
+          break;
+        case '9':
+          str = `${str} nine`;
+          break;
+        case '8':
+          str = `${str} eight`;
+          break;
+        case '4':
+          str = `${str} four`;
+          break;
+        case '6':
+          str = `${str} six`;
+          break;
+        case '7':
+          str = `${str} seven`;
+          break;
+        case '3':
+          str = `${str} three`;
+          break;
+        default:
+          str = `${str}`;
+          break;
+      }
     }
   }
   return str;
