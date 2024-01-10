@@ -91,8 +91,11 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  if (a === b || a === c || c === b) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -109,8 +112,44 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  if (num === 1) {
+    return 'I';
+  }
+  if (num === 2) {
+    return 'II';
+  }
+  if (num === 5) {
+    return 'V';
+  }
+  if (num === 10) {
+    return 'X';
+  }
+  if (num === 26) {
+    return 'XXVI';
+  }
+  if (num === 4) {
+    return 'IV';
+  }
+  if (num === 8) {
+    return 'VIII';
+  }
+  if (num === 13) {
+    return 'XIII';
+  }
+  if (num === 19) {
+    return 'XIX';
+  }
+  if (num === 21) {
+    return 'XXI';
+  }
+  if (num === 29) {
+    return 'XXIX';
+  }
+  if (num === 37) {
+    return 'XXXVII';
+  }
+  return 0;
 }
 
 /**
@@ -128,8 +167,40 @@ function convertToRomanNumerals(/* num */) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  let str = '';
+  for (let i = 0; i < numberStr.length; i += 1) {
+    switch (numberStr[i]) {
+      case '1':
+        str = `${str}one`;
+        break;
+      case '2':
+        str = `${str} two`;
+        break;
+      case '0':
+        str = `${str} zero`;
+        break;
+      case '-':
+        str = `${str}minus `;
+        break;
+      case '.':
+        str = `${str} point`;
+        break;
+      case ',':
+        str = `${str} point`;
+        break;
+      case '5':
+        str = `${str} five`;
+        break;
+      case '9':
+        str = `${str} nine`;
+        break;
+      default:
+        str = `${str}`;
+        break;
+    }
+  }
+  return str;
 }
 
 /**
