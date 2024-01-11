@@ -331,17 +331,17 @@ function isPalindrome(str) {
  *  'qwerty', 'Q'     => -1
  *  'qwerty', 'p'     => -1
  */
+let i = 0;
 function getIndexOf(str, letter) {
-  let i = 0;
-  while (i < str.length) {
-    // выводит 0, затем 1, затем 2
-    if (str[i] === letter) {
-      return i;
-    }
-    return -1;
-    i += 1;
+  if (str[i] === letter) {
+    return i;
   }
-  return -1;
+  if (i > str.length) {
+    return -1;
+  }
+
+  i += 1;
+  return getIndexOf(str, letter);
 }
 
 /**
