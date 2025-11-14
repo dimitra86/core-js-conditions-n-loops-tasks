@@ -438,89 +438,47 @@ function getBalanceIndex(arr) {
  *        ]
  */
 function getSpiralMatrix(size) {
-  const matrix3 = [
-    [1, 2, 3],
-    [8, 9, 4],
-    [7, 6, 5],
-  ];
+  const matrix = new Array(size);
+  for (let iK = 0; iK < size; iK += 1) {
+    matrix[iK] = new Array(size);
+    for (let j = 0; j < size; j += 1) {
+      matrix[iK][j] = 0;
+    }
+  }
 
-  const matrix4 = [
-    [1, 2, 3, 4],
-    [12, 13, 14, 5],
-    [11, 16, 15, 6],
-    [10, 9, 8, 7],
-  ];
-  const matrix5 = [
-    [1, 2, 3, 4, 5],
-    [16, 17, 18, 19, 6],
-    [15, 24, 25, 20, 7],
-    [14, 23, 22, 21, 8],
-    [13, 12, 11, 10, 9],
-  ];
-  const matrix6 = [
-    [1, 2, 3, 4, 5, 6],
-    [20, 21, 22, 23, 24, 7],
-    [19, 32, 33, 34, 25, 8],
-    [18, 31, 36, 35, 26, 9],
-    [17, 30, 29, 28, 27, 10],
-    [16, 15, 14, 13, 12, 11],
-  ];
+  let num = 1;
+  let top = 0;
+  let bottom = size - 1;
+  let left = 0;
+  let right = size - 1;
 
-  const matrix7 = [
-    [1, 2, 3, 4, 5, 6, 7],
-    [24, 25, 26, 27, 28, 29, 8],
-    [23, 40, 41, 42, 43, 30, 9],
-    [22, 39, 48, 49, 44, 31, 10],
-    [21, 38, 47, 46, 45, 32, 11],
-    [20, 37, 36, 35, 34, 33, 12],
-    [19, 18, 17, 16, 15, 14, 13],
-  ];
+  while (num <= size * size) {
+    for (let iMat = left; iMat <= right && num <= size * size; iMat += 1) {
+      matrix[top][iMat] = num;
+      num += 1;
+    }
+    top += 1;
 
-  const matrix9 = [
-    [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    [28, 29, 30, 31, 32, 33, 34, 35, 10],
-    [27, 48, 49, 50, 51, 52, 53, 36, 11],
-    [26, 47, 64, 65, 66, 67, 54, 37, 12],
-    [25, 46, 63, 72, 73, 68, 55, 38, 13],
-    [24, 45, 62, 71, 70, 69, 56, 39, 14],
-    [23, 44, 61, 60, 59, 58, 57, 40, 15],
-    [22, 43, 42, 41, 40, 39, 38, 41, 16],
-    [21, 20, 19, 18, 17, 16, 15, 14, 17],
-  ];
+    for (let iMat = top; iMat <= bottom && num <= size * size; iMat += 1) {
+      matrix[iMat][right] = num;
+      num += 1;
+    }
+    right -= 1;
 
-  const matrix8 = [
-    [1, 2, 3, 4, 5, 6, 7, 8],
-    [24, 25, 26, 27, 28, 29, 30, 9],
-    [23, 40, 41, 42, 43, 44, 31, 10],
-    [22, 39, 48, 49, 50, 45, 32, 11],
-    [21, 38, 47, 64, 51, 46, 33, 12],
-    [20, 37, 46, 63, 52, 47, 34, 13],
-    [19, 36, 35, 34, 33, 32, 35, 14],
-    [18, 17, 16, 15, 14, 13, 12, 15],
-  ];
+    for (let iMat = right; iMat >= left && num <= size * size; iMat -= 1) {
+      matrix[bottom][iMat] = num;
+      num += 1;
+    }
+    bottom -= 1;
 
-  if (size === 3) {
-    return matrix3;
+    for (let iMat = bottom; iMat >= top && num <= size * size; iMat -= 1) {
+      matrix[iMat][left] = num;
+      num += 1;
+    }
+    left += 1;
   }
-  if (size === 4) {
-    return matrix4;
-  }
-  if (size === 5) {
-    return matrix5;
-  }
-  if (size === 6) {
-    return matrix6;
-  }
-  if (size === 7) {
-    return matrix7;
-  }
-  if (size === 9) {
-    return matrix9;
-  }
-  if (size === 8) {
-    return matrix8;
-  }
-  return false;
+
+  return matrix;
 }
 
 /**
